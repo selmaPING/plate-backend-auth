@@ -22,7 +22,7 @@ import employees.demo.model.Radnici;
 
 import employees.demo.repository.RadniciRepository;
 
-@CrossOrigin(origins = "http://localhost:8082")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class RadniciController {
