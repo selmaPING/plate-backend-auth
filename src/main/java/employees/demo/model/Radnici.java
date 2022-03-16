@@ -16,13 +16,17 @@ public class Radnici {
     @Column(name = "prezime")
     private String prezime;
 
+    @Column(name = "ime_oca")
+    private String ime_oca;
+
     public Radnici() {
 
     }
 
-    public Radnici(String ime, String prezime) {
+    public Radnici(String ime, String prezime, String ime_oca) {
         this.ime = ime;
         this.prezime = prezime;
+        this.ime_oca = ime_oca;
     }
 
     public long getId() {
@@ -43,6 +47,14 @@ public class Radnici {
 
     public void setPrezime(String prezime) {
         this.prezime = prezime;
+    }
+
+    public String getImeOca() {
+        return ime_oca;
+    }
+
+    public void setImeOca(String ime_oca) {
+        this.ime_oca = ime_oca;
     }
 
     /*

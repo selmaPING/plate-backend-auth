@@ -65,7 +65,7 @@ public class RadniciController {
     public ResponseEntity<Radnici> createRadnik(@RequestBody Radnici radnici) {
         try {
             Radnici _radnici = radniciRepository
-                    .save(new Radnici(radnici.getIme(), radnici.getPrezime()));
+                    .save(new Radnici(radnici.getIme(), radnici.getPrezime(), radnici.getImeOca()));
             return new ResponseEntity<>(_radnici, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -80,6 +80,7 @@ public class RadniciController {
             Radnici _radnici = radnikData.get();
             _radnici.setIme(radnici.getIme());
             _radnici.setPrezime(radnici.getPrezime());
+            _radnici.setImeOca(radnici.getImeOca());
             return new ResponseEntity<>(radniciRepository.save(_radnici), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
