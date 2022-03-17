@@ -22,7 +22,7 @@ import employees.demo.model.Radnici;
 
 import employees.demo.repository.RadniciRepository;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8082")
 @RestController
 @RequestMapping("/api")
 public class RadniciController {
@@ -65,7 +65,11 @@ public class RadniciController {
     public ResponseEntity<Radnici> createRadnik(@RequestBody Radnici radnici) {
         try {
             Radnici _radnici = radniciRepository
-                    .save(new Radnici(radnici.getIme(), radnici.getPrezime(), radnici.getImeOca()));
+                    .save(new Radnici(radnici.getJMB(), radnici.getJMBG(), radnici.getIme(), radnici.getPrezime(),
+                            radnici.getImeOca(), radnici.getSpol(), radnici.getDatumRodjenja(), radnici.getMjestoRodjenja(), radnici.getOpcinaRodjenja(),
+                            radnici.getDrzavaRodjenja(), radnici.getOpcinaStanovanja(), radnici.getMjestoStanovanja(), radnici.getUlica(),
+                            radnici.getBrojUlice(), radnici.getNetoOsnovica(), radnici.getOrgDio(), radnici.getOrgJedinica(), radnici.getDatumZaposlenja(),
+                            radnici.getRadnoMjesto()));
             return new ResponseEntity<>(_radnici, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -78,9 +82,25 @@ public class RadniciController {
 
         if (radnikData.isPresent()) {
             Radnici _radnici = radnikData.get();
+            _radnici.setJMB(radnici.getJMB());
+            _radnici.setJMBG(radnici.getJMBG());
             _radnici.setIme(radnici.getIme());
             _radnici.setPrezime(radnici.getPrezime());
             _radnici.setImeOca(radnici.getImeOca());
+            _radnici.setSpol(radnici.getSpol());
+            _radnici.setDatumRodjenja(radnici.getDatumRodjenja());
+            _radnici.setMjestoRodjenja(radnici.getMjestoRodjenja());
+            _radnici.setOpcinaRodjenja(radnici.getOpcinaRodjenja());
+            _radnici.setDrzavaRodjenja(radnici.getDrzavaRodjenja());
+            _radnici.setOpcinaStanovanja(radnici.getOpcinaStanovanja());
+            _radnici.setMjestoStanovanja(radnici.getMjestoStanovanja());
+            _radnici.setUlica(radnici.getUlica());
+            _radnici.setBrojUlice(radnici.getBrojUlice());
+            _radnici.setNetoOsnovica(radnici.getNetoOsnovica());
+            _radnici.setOrgDio(radnici.getOrgDio());
+            _radnici.setOrgJedinica(radnici.getOrgJedinica());
+            _radnici.setDatumZaposlenja(radnici.getDatumZaposlenja());
+            _radnici.setRadnoMjesto(radnici.getRadnoMjesto());
             return new ResponseEntity<>(radniciRepository.save(_radnici), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -108,20 +128,5 @@ public class RadniciController {
 
     }
 
-    /*
-     * @GetMapping("/radnici/published")
-     * public ResponseEntity<List<Tutorial>> findByPublished() {
-     * try {
-     * List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
-     * 
-     * if (tutorials.isEmpty()) {
-     * return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-     * }
-     * return new ResponseEntity<>(tutorials, HttpStatus.OK);
-     * } catch (Exception e) {
-     * return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-     * }
-     * }
-     */
 
 }
