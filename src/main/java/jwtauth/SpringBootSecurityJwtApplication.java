@@ -1,13 +1,13 @@
-package employees.demo;
+package jwtauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class SpringBootSecurityJwtApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+    SpringApplication.run(SpringBootSecurityJwtApplication.class, args);
 	}
 
 }
