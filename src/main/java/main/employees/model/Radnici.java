@@ -1,5 +1,7 @@
 package main.employees.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -29,6 +31,7 @@ public class Radnici {
     @Column(name = "spol")
     private String spol;
 
+    @JsonFormat(pattern="dd.MM.yyyy.")
     @Column(name = "datum_rodjenja")
     private Date datum_rodjenja;
 
@@ -62,6 +65,7 @@ public class Radnici {
     @Column(name = "org_jedinica")
     private Integer org_jedinica;
 
+    @JsonFormat(pattern="dd.MM.yyyy.")
     @Column(name = "datum_zaposlenja")
     private Date datum_zaposlenja;
 
